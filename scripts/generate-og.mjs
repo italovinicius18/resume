@@ -31,13 +31,20 @@ const server = createServer(async (req, res) => {
     res.end('not found');
   }
 });
-await new Promise((resolve) => server.listen(0, resolve));
+await new Promise((resolve) => server.listen(0, '127.0.0.1', resolve));
 const { port } = server.address();
 
 const browser = await chromium.launch();
 const page = await browser.newPage({ viewport: { width: 1200, height: 630 } });
-await page.goto(`http://localhost:${port}/pt/`, { waitUntil: 'networkidle' });
-await page.screenshot({ path: `public/og-${profile}.png` });
-console.log(`✔ public/og-${profile}.png`);
-await browser.close();
-server.close();
+
+try {
+  const response = await page.goto(`http://localhost:${port}/pt/`, { waitUntil: 'networkidle' });
+  if (!response || !response.ok()) {
+    throw new Error(`og page for ${profile} returned ${response?.status() ?? 'no response'} — did you run PROFILE=${profile} pnpm build?`);
+  }
+  await page.screenshot({ path: `public/og-${profile}.png` });
+  console.log(`✔ public/og-${profile}.png`);
+} finally {
+  await browser.close();
+  server.close();
+}
