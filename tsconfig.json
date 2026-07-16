@@ -1,0 +1,5 @@
+{
+  "extends": "astro/tsconfigs/base",
+  "include": ["src/**/*", "tests/**/*", "scripts/**/*"],
+  "compilerOptions": { "strict": true }
+}

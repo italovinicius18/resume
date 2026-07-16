@@ -1,0 +1,30 @@
+{
+  "name": "cv-italoguimaraes",
+  "private": true,
+  "type": "module",
+  "engines": { "node": ">=22" },
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "check": "tsx scripts/check-data.ts",
+    "test": "vitest run",
+    "pdf": "node scripts/generate-pdf.mjs",
+    "smoke": "node scripts/smoke-check.mjs"
+  },
+  "dependencies": {
+    "astro": "^5.12.0",
+    "yaml": "^2.8.0",
+    "zod": "^3.25.0"
+  },
+  "devDependencies": {
+    "@fontsource/archivo-black": "^5.2.5",
+    "@fontsource-variable/jetbrains-mono": "^5.2.5",
+    "@fontsource-variable/space-grotesk": "^5.2.5",
+    "playwright": "^1.53.0",
+    "tsx": "^4.20.0",
+    "typescript": "^5.8.0",
+    "vitest": "^3.2.0",
+    "wrangler": "^4.24.0"
+  }
+}
