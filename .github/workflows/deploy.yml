@@ -1,0 +1,60 @@
+name: Deploy
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - run: pnpm install --frozen-lockfile
+
+      - name: Validate resume.yaml
+        run: pnpm check
+
+      - name: Unit tests
+        run: pnpm test
+
+      - name: Install Playwright browser
+        run: pnpm exec playwright install --with-deps chromium
+
+      - name: Build (data)
+        run: pnpm build
+        env: { PROFILE: data }
+
+      - name: Build (software)
+        run: pnpm build
+        env: { PROFILE: software }
+
+      - name: Generate PDFs
+        run: |
+          node scripts/generate-pdf.mjs data
+          node scripts/generate-pdf.mjs software
+
+      - name: Smoke check
+        run: node scripts/smoke-check.mjs
+
+      - name: Deploy data.italoguimaraes.dev
+        run: pnpm exec wrangler deploy --config wrangler.data.jsonc
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+
+      - name: Deploy software.italoguimaraes.dev
+        run: pnpm exec wrangler deploy --config wrangler.software.jsonc
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
