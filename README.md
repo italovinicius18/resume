@@ -1,11 +1,11 @@
-# CV — italoguimaraes.dev
+# CV — italoguimaraes.com
 
 Fonte única de dados → dois CVs bilíngues:
 
 | Site | Perfil | Acento |
 | --- | --- | --- |
-| [data.italoguimaraes.dev](https://data.italoguimaraes.dev) | Engenharia de Dados | verde-limão |
-| [software.italoguimaraes.dev](https://software.italoguimaraes.dev) | Engenharia de Software | ciano |
+| [data.italoguimaraes.com](https://data.italoguimaraes.com) | Engenharia de Dados | verde-limão |
+| [software.italoguimaraes.com](https://software.italoguimaraes.com) | Engenharia de Software | ciano |
 
 ## Como atualizar o CV
 
