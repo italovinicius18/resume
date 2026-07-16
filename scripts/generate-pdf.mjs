@@ -31,19 +31,24 @@ const server = createServer(async (req, res) => {
     res.end('not found');
   }
 });
-await new Promise((resolve) => server.listen(0, resolve));
+await new Promise((resolve) => server.listen(0, '127.0.0.1', resolve));
 const { port } = server.address();
 
 await mkdir(join(root, 'pdf'), { recursive: true });
 const browser = await chromium.launch();
 const page = await browser.newPage();
 
-for (const lang of ['en', 'pt']) {
-  await page.goto(`http://localhost:${port}/print/${lang}/`, { waitUntil: 'networkidle' });
-  const out = join(root, 'pdf', `cv-italo-guimaraes-${profile}-${lang}.pdf`);
-  await page.pdf({ path: out, format: 'A4', printBackground: true });
-  console.log(`✔ ${out}`);
+try {
+  for (const lang of ['en', 'pt']) {
+    const response = await page.goto(`http://localhost:${port}/print/${lang}/`, { waitUntil: 'networkidle' });
+    if (!response || !response.ok()) {
+      throw new Error(`print page for ${profile}/${lang} returned ${response?.status() ?? 'no response'} — did you run PROFILE=${profile} pnpm build?`);
+    }
+    const out = join(root, 'pdf', `cv-italo-guimaraes-${profile}-${lang}.pdf`);
+    await page.pdf({ path: out, format: 'A4', printBackground: true });
+    console.log(`✔ ${out}`);
+  }
+} finally {
+  await browser.close();
+  server.close();
 }
-
-await browser.close();
-server.close();
