@@ -54,13 +54,13 @@ jobs:
       - name: Smoke check
         run: node scripts/smoke-check.mjs
 
-      - name: Deploy data.italoguimaraes.dev
+      - name: Deploy data.italoguimaraes.com
         run: pnpm exec wrangler deploy --config wrangler.data.jsonc
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
 
-      - name: Deploy software.italoguimaraes.dev
+      - name: Deploy software.italoguimaraes.com
         run: pnpm exec wrangler deploy --config wrangler.software.jsonc
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
