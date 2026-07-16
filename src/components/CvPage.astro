@@ -5,6 +5,9 @@ import Nav from './Nav.astro';
 import Hero from './Hero.astro';
 import Experience from './Experience.astro';
 import Research from './Research.astro';
+import Stack from './Stack.astro';
+import Certifications from './Certifications.astro';
+import Projects from './Projects.astro';
 import { PROFILE } from '../lib/profile';
 import { UI } from '../lib/ui';
 import { loadResume, filterResume, metrics, t, type Lang } from '../lib/resume';
@@ -46,7 +49,10 @@ const description = t(resume.basics.headline[PROFILE], lang) + ' · ' + t(resume
     {resume.research.length > 0 && (
       <Research lang={lang} items={resume.research} num={num('research')} />
     )}
-    <!-- T7/T8 -->
+    <Stack lang={lang} items={resume.skills} num={num('stack')} />
+    <Certifications lang={lang} items={resume.certifications} num={num('certs')} />
+    <Projects lang={lang} items={resume.projects} num={num('projects')} />
+    <!-- T8 -->
     <Marquee items={marqueeItems} />
   </div>
 </Layout>

@@ -1,0 +1,36 @@
+---
+import { UI } from '../lib/ui';
+import { t, type Lang } from '../lib/resume';
+import type { Resume } from '../lib/schema';
+
+interface Props {
+  lang: Lang;
+  items: Resume['projects'];
+  num: string;
+}
+const { lang, items, num } = Astro.props;
+---
+
+<section id="projects" class="section">
+  <h2 class="sec"><span class="num">{num}</span>{UI.projects[lang]}</h2>
+  <div class="grid">
+    {items.map((p) => (
+      <article class="proj reveal">
+        <h3>{t(p.title, lang)}</h3>
+        <p>{t(p.description, lang)}</p>
+        <div class="tags">{p.tech.map((tech) => <span class="chip">{tech}</span>)}</div>
+        <a class="mono gh" href={p.github} target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+      </article>
+    ))}
+  </div>
+</section>
+
+<style>
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 16px; }
+  .proj { border: 2px solid var(--border); background: var(--surface-2); padding: 20px 22px; display: flex; flex-direction: column; gap: 10px; }
+  h3 { font-size: 1rem; font-weight: 700; }
+  p { color: var(--muted); font-size: 0.9rem; flex: 1; }
+  .tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .gh { color: var(--accent); text-decoration: none; }
+  .gh:hover { text-decoration: underline; }
+</style>

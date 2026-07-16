@@ -1,0 +1,51 @@
+---
+import { UI } from '../lib/ui';
+import { t, formatDate, type Lang } from '../lib/resume';
+import type { Resume } from '../lib/schema';
+
+interface Props {
+  lang: Lang;
+  items: Resume['certifications'];
+  num: string;
+}
+const { lang, items, num } = Astro.props;
+const featured = items.filter((c) => c.priority !== 'low');
+const rest = items.filter((c) => c.priority === 'low');
+---
+
+<section id="certs" class="section">
+  <h2 class="sec"><span class="num">{num}</span>{UI.certifications[lang]}</h2>
+  <div class="grid">
+    {featured.map((c) => (
+      <div class="cert reveal">
+        <strong>{t(c.name, lang)}</strong>
+        <span class="mono">
+          {c.issuer} · {formatDate(c.issued, lang)}
+          {c.expires ? ` → ${formatDate(c.expires, lang)}` : ''}
+        </span>
+      </div>
+    ))}
+  </div>
+  {rest.length > 0 && (
+    <details>
+      <summary class="mono">+ {rest.length} — {UI.showAllCerts[lang]}</summary>
+      <ul>
+        {rest.map((c) => (
+          <li>
+            {t(c.name, lang)} <span class="mono">— {c.issuer} · {formatDate(c.issued, lang)}</span>
+          </li>
+        ))}
+      </ul>
+    </details>
+  )}
+</section>
+
+<style>
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 14px; }
+  .cert { border: 2px solid var(--border); background: var(--surface-2); padding: 16px 18px; display: flex; flex-direction: column; gap: 6px; }
+  .cert strong { font-size: 0.92rem; }
+  details { margin-top: 22px; }
+  summary { cursor: pointer; color: var(--accent); }
+  details ul { margin-top: 12px; }
+  details li { color: var(--muted); font-size: 0.88rem; margin-bottom: 4px; }
+</style>

@@ -1,0 +1,41 @@
+---
+import { UI, SKILL_CATEGORY_LABELS, groupSkills, LEVEL_DOTS } from '../lib/ui';
+import type { Lang } from '../lib/resume';
+import type { Resume } from '../lib/schema';
+
+interface Props {
+  lang: Lang;
+  items: Resume['skills'];
+  num: string;
+}
+const { lang, items, num } = Astro.props;
+const groups = groupSkills(items);
+---
+
+<section id="stack" class="section">
+  <h2 class="sec"><span class="num">{num}</span>{UI.stack[lang]}</h2>
+  <div class="cats">
+    {groups.map(([cat, skills]) => (
+      <div class="cat reveal">
+        <h3 class="mono">{SKILL_CATEGORY_LABELS[cat][lang]}</h3>
+        <div class="chips">
+          {skills.map((s) => (
+            <span class="chip" title={s.level}>
+              {s.name}
+              <span class="lvl" aria-hidden="true">
+                {'●'.repeat(LEVEL_DOTS[s.level])}{'○'.repeat(4 - LEVEL_DOTS[s.level])}
+              </span>
+            </span>
+          ))}
+        </div>
+      </div>
+    ))}
+  </div>
+</section>
+
+<style>
+  .cats { display: grid; gap: 24px; }
+  .cat h3 { color: var(--accent); text-transform: uppercase; margin-bottom: 10px; }
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+  .chip .lvl { color: var(--accent); margin-left: 8px; font-size: 0.6rem; letter-spacing: 2px; }
+</style>
