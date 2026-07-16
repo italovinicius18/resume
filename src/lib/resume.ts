@@ -11,10 +11,22 @@ import {
 
 export type Lang = 'en' | 'pt';
 
+// YAML path resolution: We resolve relative to process.cwd() (repo root) instead of using
+// import.meta.url because Astro's bundling process breaks import.meta.url during SSR/build.
+// During build, bundled modules have import.meta.url pointing to the bundle location
+// (e.g., dist/chunks/...), not the source file location, causing incorrect relative paths.
+// This approach ensures consistent path resolution across all contexts (dev/build/test).
+// All scripts must be run from the repository root for this to work correctly.
 const YAML_PATH = resolve(process.cwd(), 'content', 'resume.yaml');
 
 export function loadResume(): Resume {
-  return resumeSchema.parse(parse(readFileSync(YAML_PATH, 'utf8')));
+  let content: string;
+  try {
+    content = readFileSync(YAML_PATH, 'utf8');
+  } catch (err) {
+    throw new Error(`content/resume.yaml not found — run commands from the repo root (cwd: ${process.cwd()})`);
+  }
+  return resumeSchema.parse(parse(content));
 }
 
 export function t(field: Localized | string, lang: Lang): string {
