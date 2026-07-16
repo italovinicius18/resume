@@ -1,0 +1,880 @@
+# =============================================================================
+# Ítalo Vinícius — Canonical Resume Data Source
+# Bilingual (EN/PT) · Profile-aware (data | software)
+# =============================================================================
+
+basics:
+  name: Ítalo Vinícius Guimarães
+  email: italovinicius19981998@gmail.com
+  phone: "+55 (61) 98290-5991"
+  location:
+    en: "Brasília, Brazil"
+    pt: "Brasília, Brasil"
+  headline:
+    data:
+      en: "Senior Data Engineer"
+      pt: "Engenheiro de Dados Sênior"
+    software:
+      en: "Software Engineer"
+      pt: "Engenheiro de Software"
+  links:
+    github: "https://github.com/italovinicius18"
+    linkedin: "https://linkedin.com/in/italovinicius18"
+
+
+# =============================================================================
+# EXPERIENCE
+# =============================================================================
+
+experience:
+
+  - company: Nubank
+    location:
+      en: "Remote — Brazil"
+      pt: "Remoto — Brasil"
+    profiles: [data, software]
+    role:
+      data:
+        en: "Senior Data / AI Engineer"
+        pt: "Engenheiro de Dados / IA Sênior"
+      software:
+        en: "Senior Software Engineer"
+        pt: "Engenheiro de Software Sênior"
+    start: "2025-11"
+    end: null
+    highlights:
+      - profiles: [data]
+        text:
+          en: "Design and optimize large-scale Spark/Databricks pipelines for high-volume financial datasets, owning the full SDLC: architecture, implementation, performance tuning, data quality, CI/CD, monitoring, and documentation."
+          pt: "Projeta e otimiza pipelines Spark/Databricks em larga escala para datasets financeiros de alto volume, com responsabilidade pelo ciclo completo: arquitetura, implementação, tuning, qualidade, CI/CD, monitoramento e documentação."
+      - profiles: [data]
+        text:
+          en: "Maintain Delta Lake tables as the system-of-record for product and risk teams, applying best practices for schema evolution, ACID transactions, and incremental processing patterns (merge, upsert, CDC) with Unity Catalog governance."
+          pt: "Mantém tabelas Delta Lake como fonte única da verdade para times de produto e risco, com schema evolution, transações ACID, padrões incrementais (merge, upsert, CDC) e governança via Unity Catalog."
+      - profiles: [data, software]
+        text:
+          en: "Build AI agent tooling (LangGraph, ReAct, MCP) integrated with internal platform services and data pipelines, designing clear service boundaries, retry/fallback strategies, and observability for production-grade agentic workflows."
+          pt: "Constrói ferramentas de agentes de IA (LangGraph, ReAct, MCP) integradas aos serviços internos de plataforma, com contratos claros, estratégias de retry/fallback e observabilidade para workflows agênticos em produção."
+      - profiles: [data]
+        text:
+          en: "Implement data quality controls, alerting, and lineage tracking to guarantee correctness and reliability for downstream consumers at fintech scale (100M+ users)."
+          pt: "Implementa controles de qualidade, alertas e rastreamento de linhagem para garantir integridade e confiabilidade dos consumidores downstream em escala fintech (100M+ usuários)."
+      - profiles: [data, software]
+        text:
+          en: "Lead technical design reviews and code reviews, mentoring engineers on Spark performance tuning, data modeling trade-offs, and scalable design patterns."
+          pt: "Lidera revisões de design técnico e code reviews, mentorando engenheiros em tuning de Spark, trade-offs de modelagem e padrões de design escaláveis."
+      - profiles: [software]
+        text:
+          en: "Implement CI/CD workflows for pipeline code and infrastructure artifacts, enabling safe, reproducible deployments with automated testing and quality gates across environments."
+          pt: "Implementa workflows de CI/CD para código e artefatos de infraestrutura, viabilizando deploys seguros e reproduzíveis com testes automatizados e quality gates."
+
+  - company: Compass UOL / Dasa Medicina Diagnóstica
+    location:
+      en: "Remote — Brazil"
+      pt: "Remoto — Brasil"
+    profiles: [data]
+    role:
+      data:
+        en: "Data Engineer"
+        pt: "Engenheiro de Dados"
+    start: "2025-04"
+    end: "2025-11"
+    highlights:
+      - profiles: [data]
+        text:
+          en: "Led DataOps operations for Dasa Medicina Diagnóstica, monitoring data ingestion and optimizing computational resources across the GCP environment (Cloud Composer, BigQuery, GCS, Dataproc)."
+          pt: "Liderou operações de DataOps para a Dasa Medicina Diagnóstica, monitorando ingestão de dados e otimizando recursos computacionais no ambiente GCP (Cloud Composer, BigQuery, GCS, Dataproc)."
+      - profiles: [data]
+        text:
+          en: "Managed Apache Airflow DAGs in Cloud Composer, ensuring efficient execution of critical ETL pipelines and high availability of the data platform."
+          pt: "Gerenciou DAGs do Apache Airflow no Cloud Composer, garantindo execução eficiente de pipelines ETL críticos e alta disponibilidade da plataforma de dados."
+      - profiles: [data]
+        text:
+          en: "Developed and optimized PySpark jobs on Dataproc for large-scale data transformation with dimensional modeling and query optimization in BigQuery."
+          pt: "Desenvolveu e otimizou jobs PySpark no Dataproc para transformações de dados em larga escala com modelagem dimensional e otimização de queries no BigQuery."
+      - profiles: [data]
+        text:
+          en: "Provisioned infrastructure on GKE/Kubernetes with Terraform; implemented monitoring and automated alerting with Grafana, increasing reliability and reducing MTTR on complex pipeline incidents."
+          pt: "Provisionou infraestrutura em GKE/Kubernetes com Terraform; implementou monitoramento e alertas automatizados com Grafana, aumentando confiabilidade e reduzindo MTTR em incidentes complexos de pipelines."
+
+  - company: TRACTIAN
+    location:
+      en: "Remote — Brazil"
+      pt: "Remoto — Brasil"
+    profiles: [data, software]
+    role:
+      data:
+        en: "Data Engineer — Industrial IoT & Equipment Monitoring"
+        pt: "Engenheiro de Dados — IoT Industrial e Monitoramento de Equipamentos"
+      software:
+        en: "Data Engineer — Industrial IoT"
+        pt: "Engenheiro de Dados — IoT Industrial"
+    start: "2024-10"
+    end: "2025-05"
+    highlights:
+      - profiles: [data, software]
+        text:
+          en: "Built production Python-based data ingestion pipelines for structured and unstructured sensor data generated by industrial equipment monitoring devices (vibration, temperature, current, runtime telemetry)."
+          pt: "Construiu pipelines de ingestão de dados em Python para dados estruturados e não estruturados gerados por dispositivos de monitoramento de equipamentos industriais (vibração, temperatura, corrente, telemetria de operação)."
+      - profiles: [data, software]
+        text:
+          en: "Integrated MongoDB as the primary operational source, extracting heterogeneous equipment telemetry and event data and loading it into ClickHouse (optimized for high-frequency time-series queries) and PostgreSQL for operational analytics."
+          pt: "Integrou MongoDB como fonte operacional principal, extraindo telemetria heterogênea de equipamentos e dados de eventos para ClickHouse (otimizado para consultas de séries temporais de alta frequência) e PostgreSQL para analytics operacional."
+      - profiles: [data, software]
+        text:
+          en: "Orchestrated Python extraction and ingestion scripts for scheduled and event-driven data flows, ensuring reliable, low-latency processing of high-frequency industrial sensor readings in production at scale."
+          pt: "Orquestrou scripts de extração e ingestão em Python para fluxos agendados e orientados a eventos, garantindo processamento confiável e de baixa latência de leituras de sensores industriais de alta frequência em produção."
+
+  - company: Ministério da Saúde
+    location:
+      en: "Remote — Brasília, DF, Brazil"
+      pt: "Remoto — Brasília, DF, Brasil"
+    profiles: [data, software]
+    role:
+      data:
+        en: "Data Engineer"
+        pt: "Engenheiro de Dados"
+      software:
+        en: "Software Engineer"
+        pt: "Engenheiro de Software"
+    start: "2024-01"
+    end: null
+    highlights:
+      - profiles: [data]
+        text:
+          en: "Architect and maintain a distributed data platform integrating PostgreSQL, DuckDB, and AWS services (S3, Lambda) as a system-of-record for national health indicators, with schema versioning, access governance, and auditability."
+          pt: "Arquiteta e mantém plataforma de dados distribuída integrando PostgreSQL, DuckDB e AWS (S3, Lambda) como sistema de registro para indicadores nacionais de saúde, com versionamento de schema, governança de acesso e auditabilidade."
+      - profiles: [data]
+        text:
+          en: "Built the SISVAN pipeline integrating operational data from national food and nutrition surveillance systems into a structured, analytics-ready fact table with completeness tracking and audit capabilities — paper accepted at SEMISH/CSBC 2026."
+          pt: "Construiu o pipeline do SISVAN integrando dados operacionais dos sistemas nacionais de vigilância alimentar e nutricional em uma tabela fato estruturada com rastreamento de completude e auditabilidade — aceito no SEMISH/CSBC 2026."
+      - profiles: [data, software]
+        text:
+          en: "Automated CI/CD workflows via GitLab for infrastructure and code artifacts; implemented schema migration tooling and multi-environment deployments."
+          pt: "Automatizou workflows de CI/CD via GitLab para artefatos de código e infraestrutura; implementou ferramentas de migração de schema e deploys multi-ambiente."
+      - profiles: [software]
+        text:
+          en: "Developed a Django REST API serving as the data access layer, abstracting storage complexity behind clean, versioned interfaces consumed by internal product teams and government partner integrations."
+          pt: "Desenvolveu API REST em Django como camada de acesso a dados, abstraindo a complexidade de armazenamento em interfaces limpas e versionadas consumidas por times internos e integrações de parceiros governamentais."
+      - profiles: [software]
+        text:
+          en: "Designed service architectures with microservices patterns, integrating components via synchronous and asynchronous message exchange; deployed applications on Kubernetes with CI/CD via GitLab."
+          pt: "Projetou arquiteturas de serviços com padrões de microsserviços, integrando componentes via troca de mensagens síncronas e assíncronas; fez deploy de aplicações em Kubernetes com CI/CD via GitLab."
+
+  - company: A3Data
+    location:
+      en: "Remote — Belo Horizonte, MG, Brazil"
+      pt: "Remoto — Belo Horizonte, MG, Brasil"
+    profiles: [data]
+    role:
+      data:
+        en: "Data Engineer"
+        pt: "Engenheiro de Dados"
+    start: "2023-11"
+    end: "2024-10"
+    clients:
+      - name: Hypofarma
+        duration:
+          en: "3 months"
+          pt: "3 meses"
+        highlights:
+          - profiles: [data]
+            text:
+              en: "Full data architecture design from scratch; authored AWS architecture proposals and implemented with Terraform and GitLab CI/CD; established data governance culture with OpenMetadata."
+              pt: "Estruturação completa da arquitetura de dados do zero; elaborou propostas de arquitetura AWS e implementou com Terraform e GitLab CI/CD; estabeleceu cultura de governança de dados com OpenMetadata."
+      - name: Farmax
+        duration:
+          en: "6 months"
+          pt: "6 meses"
+        highlights:
+          - profiles: [data]
+            text:
+              en: "Led migration of data architecture from AWS EC2/EMR to Kubernetes (EKS); built full infrastructure with Terraform and GitLab CI/CD; deployed SparkApplication, Prometheus, Grafana, and Airflow via Terraform, Helm, and ArgoCD."
+              pt: "Liderou a migração da arquitetura de AWS EC2/EMR para Kubernetes (EKS); construiu infraestrutura completa com Terraform e GitLab CI/CD; fez deploy de SparkApplication, Prometheus, Grafana e Airflow via Terraform, Helm e ArgoCD."
+      - name: Banco BMG
+        duration:
+          en: "3 months"
+          pt: "3 meses"
+        highlights:
+          - profiles: [data]
+            text:
+              en: "Maintained data engineering on AWS architecture; optimized Excel data ingestion flows with Spark; developed a Django REST API to automate ETL delivery; modularized Spark code for reliability and decoupling."
+              pt: "Sustentação da engenharia de dados em arquitetura AWS; otimizou fluxos de ingestão de dados Excel com Spark; desenvolveu API REST em Django para automação de ETL; modularizou código Spark para maior confiabilidade e desacoplamento."
+    highlights:
+      - profiles: [data]
+        text:
+          en: "Designed enterprise Data Lakehouse architectures for financial and healthcare clients using AWS (S3, Glue, Redshift, Athena) and GCP (BigQuery, GCS, Dataproc), implementing Star and Snowflake Schema dimensional models."
+          pt: "Projetou arquiteturas enterprise de Data Lakehouse para clientes financeiros e de saúde com AWS (S3, Glue, Redshift, Athena) e GCP (BigQuery, GCS, Dataproc), implementando modelos dimensionais Star e Snowflake Schema."
+      - profiles: [data]
+        text:
+          en: "Orchestrated ETL pipelines with Apache Airflow and AWS Glue; implemented data catalog (DataHub, OpenMetadata) and quality tooling (Great Expectations, SODA)."
+          pt: "Orquestrou pipelines ETL com Apache Airflow e AWS Glue; implementou catálogo de dados (DataHub, OpenMetadata) e ferramentas de qualidade (Great Expectations, SODA)."
+      - profiles: [data]
+        text:
+          en: "Led code reviews and defined engineering standards (idempotency, testability, documentation); mentored engineers on distributed systems and data modeling best practices across multi-client squads."
+          pt: "Liderou revisões de código e definiu padrões de engenharia (idempotência, testabilidade, documentação); mentorou engenheiros em sistemas distribuídos e modelagem de dados em squads multi-cliente."
+
+  - company: Embraer
+    location:
+      en: "Remote — São José dos Campos, SP, Brazil"
+      pt: "Remoto — São José dos Campos, SP, Brasil"
+    profiles: [data, software]
+    role:
+      data:
+        en: "Data Engineer"
+        pt: "Engenheiro de Dados"
+      software:
+        en: "Software Engineer (Data)"
+        pt: "Engenheiro de Software (Dados)"
+    start: "2021-11"
+    end: "2023-11"
+    highlights:
+      - profiles: [data, software]
+        text:
+          en: "Led the Data Ecosystem initiative: designed raw-to-refined Data Lake zones (raw, trusted, refined) ingesting operational manufacturing data from heterogeneous sources (SQL Server, Oracle, SAP, GCP databases) using PySpark, NiFi, and Airflow across AWS and GCP."
+          pt: "Liderou o projeto Data Ecosystem: projetou zonas de Data Lake (raw, trusted, refined) ingerindo dados operacionais de manufatura de fontes heterogêneas (SQL Server, Oracle, SAP, bancos GCP) com PySpark, NiFi e Airflow em AWS e GCP."
+      - profiles: [data]
+        text:
+          en: "Built operational data pipelines ingesting sensor and process telemetry from manufacturing systems into cloud analytics infrastructure — directly analogous to OT-to-cloud industrial data integration."
+          pt: "Construiu pipelines de dados operacionais ingerindo telemetria de sensores e processos de manufatura para infraestrutura de analytics em nuvem — analogia direta à integração OT-to-cloud de dados industriais."
+      - profiles: [data, software]
+        text:
+          en: "Built analytical dashboards in Power BI for IT teams (Service, Quality, Delivery, Costs); automated KPIs, spreadsheets, and management systems; administered Power BI capacity."
+          pt: "Construiu dashboards analíticos no Power BI para times de TI (Serviço, Qualidade, Delivery, Custos); automatizou KPIs, planilhas e sistemas de gerenciamento; administrou capacidade do Power BI."
+      - profiles: [data, software]
+        text:
+          en: "Applied DevOps practices for production reliability and monitoring; managed relational and non-relational data across SQL and NoSQL stores."
+          pt: "Aplicou práticas de DevOps para confiabilidade e monitoramento em produção; gerenciou dados relacionais e não-relacionais em stores SQL e NoSQL."
+
+  - company: Polícia Civil do Estado de Goiás
+    location:
+      en: "Remote — Brazil"
+      pt: "Remoto — Brasil"
+    profiles: [software]
+    role:
+      software:
+        en: "Software Engineer (Contract)"
+        pt: "Engenheiro de Software (Contrato)"
+    start: "2022-03"
+    end: "2023-07"
+    highlights:
+      - profiles: [software]
+        text:
+          en: "Developed the Schedula project using agile methodologies (Lean Inception, Scrum, XP); collaborated with clients on system requirements and results validation."
+          pt: "Desenvolveu o projeto Schedula utilizando metodologias ágeis (Lean Inception, Scrum, XP); colaborou com clientes nos requisitos do sistema e validação dos resultados."
+      - profiles: [software]
+        text:
+          en: "Built backend microservices with TypeScript, NestJS, and PostgreSQL; implemented CI/CD pipelines and Docker containerization; developed frontend with React and Vue."
+          pt: "Construiu microsserviços backend com TypeScript, NestJS e PostgreSQL; implementou pipelines de CI/CD e conteinerização com Docker; desenvolveu frontend com React e Vue."
+      - profiles: [software]
+        text:
+          en: "Delivered training to students on software development methods covering Git/GitHub, Docker, and Front-end/Back-end development."
+          pt: "Ministrou treinamentos para estudantes sobre métodos de desenvolvimento de software abrangendo Git/GitHub, Docker e desenvolvimento Front-end/Back-end."
+
+  - company: Tribunal de Contas da União (TCU)
+    location:
+      en: "Brasília, DF, Brazil"
+      pt: "Brasília, DF, Brasil"
+    profiles: [data, software]
+    role:
+      data:
+        en: "Software Engineer (Intern)"
+        pt: "Engenheiro de Software (Estágio)"
+      software:
+        en: "Software Engineer (Intern)"
+        pt: "Engenheiro de Software (Estágio)"
+    start: "2021-01"
+    end: "2021-10"
+    highlights:
+      - profiles: [data, software]
+        text:
+          en: "Managed Oracle databases and developed enterprise Oracle APEX applications; optimized relational schemas and query performance for internal government audit systems."
+          pt: "Gerenciou bancos de dados Oracle e desenvolveu aplicações enterprise Oracle APEX; otimizou schemas relacionais e performance de queries para sistemas governamentais de auditoria."
+      - profiles: [software]
+        text:
+          en: "Developed and corrected JavaScript code for UI/UX improvements and front-end functionality."
+          pt: "Desenvolveu e corrigiu código JavaScript para melhorias de UI/UX e funcionalidades de front-end."
+
+  - company: Universidade de Brasília
+    location:
+      en: "Brasília, DF, Brazil"
+      pt: "Brasília, DF, Brasil"
+    profiles: [data, software]
+    role:
+      data:
+        en: "Computer Vision Researcher"
+        pt: "Pesquisador em Visão Computacional"
+      software:
+        en: "Computer Vision Researcher"
+        pt: "Pesquisador em Visão Computacional"
+    start: "2020-08"
+    end: "2021-01"
+    highlights:
+      - profiles: [data, software]
+        text:
+          en: "Developed and researched predictive models for road lane detection using convolutional neural networks and deep learning in the CARLA autonomous driving simulator; applied data mining and analysis techniques."
+          pt: "Desenvolveu e pesquisou modelos preditivos para detecção de faixas de rodagem usando redes neurais convolucionais e deep learning no simulador CARLA; aplicou técnicas de mineração e análise de dados."
+
+
+# =============================================================================
+# ACADEMIC RESEARCH
+# =============================================================================
+
+research:
+  - institution:
+      en: "University of Brasília — PPCA"
+      pt: "Universidade de Brasília — PPCA"
+    title:
+      en: "Benchmarking Open Table Formats in Cloud Lakehouse Architectures with TPC-DS"
+      pt: "Benchmarking de Formatos de Tabela Open Table em Arquiteturas Lakehouse com TPC-DS"
+    start: "2024-10"
+    end: null
+    profiles: [data]
+    highlights:
+      - profiles: [data]
+        text:
+          en: "Benchmark Apache Iceberg, Delta Lake, and Apache Hudi on Spark over S3-compatible storage (MinIO) using the full TPC-DS workload across multiple scale factors and file formats (Parquet, ORC, Avro) — paper accepted at CLOSER 2026."
+          pt: "Avalia Apache Iceberg, Delta Lake e Apache Hudi com Spark sobre armazenamento S3-compatible (MinIO) usando workloads TPC-DS completos em múltiplos scale factors e formatos de arquivo (Parquet, ORC, Avro) — paper aceito no CLOSER 2026."
+      - profiles: [data]
+        text:
+          en: "Findings cover indexing strategies, compaction overhead, schema evolution, ACID transaction behavior, and multi-engine read consistency — directly applicable to production Lakehouse platform design."
+          pt: "Resultados cobrem estratégias de indexação, overhead de compactação, schema evolution, comportamento transacional ACID e consistência de leitura multi-engine — diretamente aplicável ao design de plataformas Lakehouse em produção."
+
+
+# =============================================================================
+# EDUCATION
+# =============================================================================
+
+education:
+  - institution:
+      en: "University of Brasília"
+      pt: "Universidade de Brasília"
+    degree:
+      en: "M.Sc. in Applied Computing (PPCA)"
+      pt: "Mestrado em Computação Aplicada (PPCA)"
+    field:
+      en: "Distributed Systems & Cloud Lakehouse Architecture"
+      pt: "Sistemas Distribuídos e Arquiteturas Lakehouse em Nuvem"
+    start: "2024-10"
+    end: null
+    profiles: [data, software]
+
+  - institution:
+      en: "University of Brasília"
+      pt: "Universidade de Brasília"
+    degree:
+      en: "B.Sc. in Software Engineering"
+      pt: "Bacharelado em Engenharia de Software"
+    start: "2018"
+    end: "2023"
+    profiles: [data, software]
+
+
+# =============================================================================
+# CERTIFICATIONS
+# priority: high = always shown | medium = shown in relevant profiles | low = optional
+# =============================================================================
+
+certifications:
+  - name:
+      en: "Astronomer Certification: DAG Authoring for Apache Airflow 3"
+      pt: "Astronomer Certification: DAG Authoring for Apache Airflow 3"
+    issuer: Astronomer
+    issued: "2025-10"
+    expires: null
+    profiles: [data]
+    priority: high
+
+  - name:
+      en: "Astronomer Certification for Apache Airflow 3 Fundamentals"
+      pt: "Astronomer Certification for Apache Airflow 3 Fundamentals"
+    issuer: Astronomer
+    issued: "2025-07"
+    expires: null
+    profiles: [data]
+    priority: high
+
+  - name:
+      en: "AWS Certified Data Engineer – Associate"
+      pt: "AWS Certified Data Engineer – Associate"
+    issuer: Amazon Web Services (AWS)
+    issued: "2025-03"
+    expires: "2028-03"
+    profiles: [data]
+    priority: high
+
+  - name:
+      en: "Google Professional Data Engineer"
+      pt: "Google Professional Data Engineer"
+    issuer: Google
+    issued: "2024-07"
+    expires: "2026-07"
+    profiles: [data]
+    priority: high
+
+  - name:
+      en: "Astronomer Certification for Apache Airflow Fundamentals"
+      pt: "Astronomer Certification for Apache Airflow Fundamentals"
+    issuer: Astronomer
+    issued: "2024-01"
+    expires: null
+    profiles: [data]
+    priority: medium
+
+  - name:
+      en: "AWS Certified Cloud Practitioner"
+      pt: "AWS Certified Cloud Practitioner"
+    issuer: Amazon Web Services (AWS)
+    issued: "2023-09"
+    expires: "2026-09"
+    profiles: [data, software]
+    priority: medium
+
+  - name:
+      en: "Google Data Analytics"
+      pt: "Google Data Analytics"
+    issuer: Coursera
+    issued: "2022-11"
+    profiles: [data]
+    priority: low
+
+  - name:
+      en: "Big Data Engineer"
+      pt: "Big Data Engineer"
+    issuer: Semantix
+    issued: "2022-04"
+    profiles: [data]
+    priority: low
+
+  - name:
+      en: "Machine Learning Scientist with Python"
+      pt: "Machine Learning Scientist with Python"
+    issuer: DataCamp
+    issued: "2022-05"
+    profiles: [data, software]
+    priority: low
+
+  - name:
+      en: "Machine Learning with PySpark"
+      pt: "Machine Learning with PySpark"
+    issuer: DataCamp
+    issued: "2022-04"
+    profiles: [data]
+    priority: low
+
+  - name:
+      en: "Data Scientist with Python"
+      pt: "Data Scientist with Python"
+    issuer: DataCamp
+    issued: "2021-07"
+    profiles: [data]
+    priority: low
+
+  - name:
+      en: "Deep Learning Specialization"
+      pt: "Programa de cursos integrados: Deep Learning"
+    issuer: Coursera
+    issued: "2020-11"
+    profiles: [data, software]
+    priority: low
+
+  - name:
+      en: "TensorFlow: Machine Learning and Deep Learning with Python"
+      pt: "TensorFlow: Machine Learning e Deep Learning com Python"
+    issuer: Udemy
+    issued: "2020-02"
+    profiles: [data, software]
+    priority: low
+
+  - name:
+      en: "Data Analysis with Python"
+      pt: "Análise de Dados com Python"
+    issuer: freeCodeCamp
+    issued: "2022-01"
+    profiles: [data]
+    priority: low
+
+  - name:
+      en: "Front End Libraries"
+      pt: "Front End Libraries"
+    issuer: freeCodeCamp
+    issued: "2021-08"
+    profiles: [software]
+    priority: low
+
+  - name:
+      en: "B1 Preliminary English — Score 146"
+      pt: "B1 Preliminary English — Pontuação 146"
+    issuer: Cambridge English
+    issued: "2018-01"
+    credential_id: IWF929890
+    profiles: [data, software]
+    priority: low
+
+
+# =============================================================================
+# SKILLS
+# =============================================================================
+
+skills:
+
+  # --- Languages ---
+  - name: Python
+    profiles: [data, software]
+    category: language
+    level: advanced
+
+  - name: SQL
+    profiles: [data, software]
+    category: language
+    level: advanced
+
+  - name: Scala
+    profiles: [data]
+    category: language
+    level: basic
+
+  - name: TypeScript
+    profiles: [software]
+    category: language
+    level: intermediate
+
+  - name: JavaScript
+    profiles: [software]
+    category: language
+    level: intermediate
+
+  - name: Shell scripting
+    profiles: [data, software]
+    category: language
+    level: intermediate
+
+  - name: YAML
+    profiles: [data, software]
+    category: language
+    level: intermediate
+
+  - name: C++
+    profiles: [software]
+    category: language
+    level: basic
+
+  # --- Data Processing ---
+  - name: Apache Spark / PySpark
+    profiles: [data]
+    category: processing
+    level: advanced
+
+  - name: Databricks
+    profiles: [data]
+    category: processing
+    level: advanced
+
+  - name: Delta Lake
+    profiles: [data]
+    category: processing
+    level: advanced
+
+  - name: Apache Iceberg
+    profiles: [data]
+    category: processing
+    level: advanced
+
+  - name: Apache Hudi
+    profiles: [data]
+    category: processing
+    level: intermediate
+
+  - name: dbt
+    profiles: [data]
+    category: processing
+    level: intermediate
+
+  - name: Apache Kafka
+    profiles: [data]
+    category: processing
+    level: intermediate
+
+  - name: Apache NiFi
+    profiles: [data]
+    category: processing
+    level: intermediate
+
+  # --- Orchestration ---
+  - name: Apache Airflow
+    profiles: [data]
+    category: orchestration
+    level: expert
+
+  - name: AWS Glue
+    profiles: [data]
+    category: orchestration
+    level: intermediate
+
+  # --- Cloud ---
+  - name: GCP (BigQuery, Cloud Composer, GCS, GKE, Dataproc, Pub/Sub, Dataflow, IAM)
+    profiles: [data, software]
+    category: cloud
+    level: advanced
+
+  - name: AWS (S3, Glue, Redshift, Athena, Lambda, RDS, EMR, EC2, IAM)
+    profiles: [data, software]
+    category: cloud
+    level: advanced
+
+  # --- Infrastructure ---
+  - name: Terraform
+    profiles: [data, software]
+    category: infra
+    level: advanced
+
+  - name: Docker
+    profiles: [data, software]
+    category: infra
+    level: advanced
+
+  - name: Kubernetes / GKE / EKS
+    profiles: [data, software]
+    category: infra
+    level: intermediate
+
+  - name: Helm / ArgoCD
+    profiles: [data]
+    category: infra
+    level: intermediate
+
+  - name: GitHub Actions
+    profiles: [data, software]
+    category: cicd
+    level: intermediate
+
+  - name: GitLab CI
+    profiles: [data, software]
+    category: cicd
+    level: intermediate
+
+  # --- Databases ---
+  - name: PostgreSQL
+    profiles: [data, software]
+    category: database
+    level: advanced
+
+  - name: ClickHouse
+    profiles: [data]
+    category: database
+    level: intermediate
+
+  - name: MongoDB
+    profiles: [data]
+    category: database
+    level: intermediate
+
+  - name: DuckDB
+    profiles: [data]
+    category: database
+    level: intermediate
+
+  - name: DynamoDB
+    profiles: [data]
+    category: database
+    level: intermediate
+
+  - name: Oracle / Oracle APEX
+    profiles: [software]
+    category: database
+    level: intermediate
+
+  - name: Redshift
+    profiles: [data]
+    category: database
+    level: intermediate
+
+  # --- Data Quality & Governance ---
+  - name: Great Expectations
+    profiles: [data]
+    category: quality
+    level: intermediate
+
+  - name: SODA
+    profiles: [data]
+    category: quality
+    level: intermediate
+
+  - name: DataHub
+    profiles: [data]
+    category: governance
+    level: intermediate
+
+  - name: OpenMetadata
+    profiles: [data]
+    category: governance
+    level: intermediate
+
+  - name: Unity Catalog
+    profiles: [data]
+    category: governance
+    level: intermediate
+
+  # --- Observability ---
+  - name: Grafana
+    profiles: [data]
+    category: observability
+    level: intermediate
+
+  - name: Prometheus
+    profiles: [data]
+    category: observability
+    level: intermediate
+
+  # --- AI / Agents ---
+  - name: LangGraph
+    profiles: [data, software]
+    category: ai
+    level: intermediate
+
+  - name: MCP (Model Context Protocol)
+    profiles: [data, software]
+    category: ai
+    level: intermediate
+
+  - name: RAG
+    profiles: [data, software]
+    category: ai
+    level: intermediate
+
+  # --- Backend (software profile) ---
+  - name: Django / Django REST Framework
+    profiles: [software]
+    category: backend
+    level: intermediate
+
+  - name: NestJS
+    profiles: [software]
+    category: backend
+    level: intermediate
+
+  - name: React
+    profiles: [software]
+    category: frontend
+    level: intermediate
+
+  - name: Vue.js
+    profiles: [software]
+    category: frontend
+    level: basic
+
+
+# =============================================================================
+# PROJECTS
+# =============================================================================
+
+projects:
+  - title:
+      en: "Data Pipeline & Sentiment Analysis"
+      pt: "Pipeline de Dados e Análise de Sentimento"
+    description:
+      en: "Consumed Telegram messages, processed with Kafka and Spark Streaming, performed sentiment analysis, and stored results in Elasticsearch."
+      pt: "Consumo de mensagens do Telegram, processamento com Kafka e Spark Streaming, análise de sentimento e armazenamento no Elasticsearch."
+    tech: [Python, Kafka, Spark, Elasticsearch]
+    profiles: [data]
+    github: "https://github.com/italovinicius18/PSPD/tree/main/ProjetoFinal/B"
+
+  - title:
+      en: "Device Behavior Analysis (Tractian Challenge)"
+      pt: "Análise de Comportamento de Aparelhos (Desafio Tractian)"
+    description:
+      en: "Evaluated equipment performance based on motor data collected from industrial devices."
+      pt: "Avaliação do desempenho de equipamentos com base em dados coletados do motor de dispositivos industriais."
+    tech: [Python]
+    profiles: [data]
+    github: "https://github.com/italovinicius18/DesafioTractian/blob/main/Tractian.ipynb"
+
+  - title:
+      en: "Traffic Sign Detection & Analysis"
+      pt: "Detecção e Análise de Sinais de Trânsito"
+    description:
+      en: "Analyzed traffic signs in the CARLA autonomous driving simulator using YOLOv5 and Tesseract OCR."
+      pt: "Análise de sinais de trânsito no simulador CARLA usando modelos YOLOv5 e Tesseract OCR."
+    tech: [Python, YOLOv5, Tesseract]
+    profiles: [data, software]
+    github: "https://github.com/guilherme-mendes/TEES-Autonomous-vehicles"
+
+  - title:
+      en: "Car Sales Analysis"
+      pt: "Análise de Vendas de Carros"
+    description:
+      en: "Exploratory data analysis and price prediction for car sales at a specific dealership."
+      pt: "Análise exploratória de dados e predição de preços para vendas de carros de uma concessionária específica."
+    tech: [Python]
+    profiles: [data]
+    github: "https://github.com/italovinicius18/DataScience/blob/main/Cars%20price%20prediction/notebook.ipynb"
+
+  - title:
+      en: "User Review Analysis"
+      pt: "Análise de Avaliações de Usuários"
+    description:
+      en: "Sentiment and feedback analysis from user reviews of a motorcycle model."
+      pt: "Análise de sentimentos e feedback de usuários sobre um modelo de motocicleta."
+    tech: [Python]
+    profiles: [data]
+    github: "https://github.com/italovinicius18/DataScience/tree/main/Moped%20Reviews"
+
+  - title:
+      en: "Schedula — Service Management Microservices"
+      pt: "Schedula — Microsserviços de Gestão de Atendimento"
+    description:
+      en: "Microservices-based system for managing police civil service scheduling, built with TypeScript, NestJS, React, and PostgreSQL using agile methodologies."
+      pt: "Sistema baseado em microsserviços para gestão de atendimento da Polícia Civil, construído com TypeScript, NestJS, React e PostgreSQL usando metodologias ágeis."
+    tech: [TypeScript, NestJS, React, PostgreSQL, Docker]
+    profiles: [software]
+    github: "https://github.com/fga-eps-mds/2022-1-schedula-front"
+
+  - title:
+      en: "Ludo.io"
+      pt: "Ludo.io"
+    description:
+      en: "Real-time multiplayer Ludo game built with React, Express, and Socket.io."
+      pt: "Jogo de Ludo multiplayer em tempo real construído com React, Express e Socket.io."
+    tech: [JavaScript, React, ExpressJS, "Socket.io"]
+    profiles: [software]
+    github: "https://github.com/italovinicius18/ludo.io"
+
+  - title:
+      en: "Coletaço"
+      pt: "Coletaço"
+    description:
+      en: "Mobile app to help recyclable material collectors find and organize collection routes."
+      pt: "Aplicativo mobile para auxiliar coletores de material reciclável a encontrar e organizar rotas de coleta."
+    tech: [JavaScript, "React Native", ExpressJS]
+    profiles: [software]
+    github: "https://github.com/italovinicius18/Coletaco"
+
+
+# =============================================================================
+# LANGUAGES
+# =============================================================================
+
+languages:
+  - language:
+      en: Portuguese
+      pt: Português
+    level:
+      en: Native
+      pt: Nativo
+    profiles: [data, software]
+
+  - language:
+      en: English
+      pt: Inglês
+    level:
+      en: "Professional working proficiency (spoken and written)"
+      pt: "Proficiência profissional (fala e escrita)"
+    profiles: [data, software]
+
+  - language:
+      en: Spanish
+      pt: Espanhol
+    level:
+      en: Basic
+      pt: Básico
+    profiles: [data]
