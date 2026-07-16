@@ -1,0 +1,63 @@
+---
+import '@fontsource/archivo-black';
+import '@fontsource-variable/space-grotesk';
+import '@fontsource-variable/jetbrains-mono';
+import '../styles/tokens.css';
+import '../styles/themes/data.css';
+import '../styles/themes/software.css';
+import { PROFILE, SITES } from '../lib/profile';
+import type { Lang } from '../lib/resume';
+
+interface Props {
+  lang: Lang;
+  title: string;
+  description: string;
+}
+const { lang, title, description } = Astro.props;
+const base = SITES[PROFILE];
+---
+
+<!doctype html>
+<html lang={lang === 'pt' ? 'pt-BR' : 'en'} data-profile={PROFILE}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="canonical" href={`${base}/${lang}/`} />
+    <link rel="alternate" hreflang="pt-BR" href={`${base}/pt/`} />
+    <link rel="alternate" hreflang="en" href={`${base}/en/`} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="profile" />
+    <meta property="og:image" content={`${base}/og-${PROFILE}.png`} />
+  </head>
+  <body>
+    <slot />
+    <script>
+      document.querySelectorAll<HTMLAnchorElement>('a[data-lang-toggle]').forEach((a) => {
+        a.addEventListener('click', () => {
+          a.href = a.href.split('#')[0] + location.hash;
+        });
+      });
+
+      const els = document.querySelectorAll('.reveal');
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        els.forEach((el) => el.classList.add('in'));
+      } else {
+        const io = new IntersectionObserver(
+          (entries) =>
+            entries.forEach((e) => {
+              if (e.isIntersecting) {
+                e.target.classList.add('in');
+                io.unobserve(e.target);
+              }
+            }),
+          { threshold: 0.12 },
+        );
+        els.forEach((el) => io.observe(el));
+      }
+    </script>
+  </body>
+</html>
