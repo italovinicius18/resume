@@ -1,0 +1,11 @@
+{
+  "name": "cv-software",
+  "main": "worker/index.js",
+  "compatibility_date": "2026-07-01",
+  "assets": {
+    "directory": "./dist/software",
+    "binding": "ASSETS",
+    "run_worker_first": ["/"]
+  },
+  "routes": [{ "pattern": "software.italoguimaraes.dev", "custom_domain": true }]
+}
