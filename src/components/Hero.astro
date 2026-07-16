@@ -1,0 +1,70 @@
+---
+import { PROFILE } from '../lib/profile';
+import { UI } from '../lib/ui';
+import { t, type Lang, type Metrics } from '../lib/resume';
+import type { Resume } from '../lib/schema';
+
+interface Props {
+  lang: Lang;
+  resume: Resume;
+  m: Metrics;
+}
+const { lang, resume, m } = Astro.props;
+const { basics } = resume;
+const parts = basics.name.split(' ');
+const first = parts[0];
+const last = parts[parts.length - 1];
+---
+
+<header class="hero section" id="top">
+  <div class="top mono">
+    <span>ITALOGUIMARAES.DEV/{PROFILE.toUpperCase()}</span>
+    <span>(01) — {UI.about[lang]}</span>
+  </div>
+  <h1>{first}<br />{last}<span class="dot">.</span></h1>
+  <p class="tagline">
+    <span class="accent-tag">{t(basics.headline[PROFILE], lang)}</span>
+    <span class="mono">@ {m.current.join(' · ')}</span>
+  </p>
+  <div class="grid reveal">
+    <div class="cell">
+      <strong>{m.years}+</strong>
+      <span class="mono">{UI.yearsLabel[lang]}</span>
+    </div>
+    <div class="cell">
+      <strong>{m.certs}</strong>
+      <span class="mono">{UI.certsLabel[lang]}</span>
+    </div>
+    {m.papers > 0 && (
+      <div class="cell">
+        <strong>{m.papers}</strong>
+        <span class="mono">{UI.papersLabel[lang]}</span>
+      </div>
+    )}
+    <div class="cell">
+      <strong class="loc">{t(basics.location, lang)}</strong>
+      <span class="mono">{lang === 'pt' ? 'REMOTO · GLOBAL' : 'REMOTE · GLOBAL'}</span>
+    </div>
+  </div>
+</header>
+
+<style>
+  .top { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; margin-bottom: 40px; }
+  h1 {
+    font-family: var(--display);
+    font-size: clamp(3rem, 9vw, 6.5rem);
+    line-height: 0.92;
+    text-transform: uppercase;
+    letter-spacing: -0.03em;
+  }
+  .dot { color: var(--accent); }
+  .tagline { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; margin: 28px 0 44px; }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    border: 2px solid var(--border);
+  }
+  .cell { padding: 18px 20px; border: 1px solid var(--border); display: flex; flex-direction: column; gap: 4px; }
+  .cell strong { font-family: var(--display); font-size: 1.8rem; color: var(--accent); }
+  .cell strong.loc { font-size: 1.05rem; color: var(--text); }
+</style>

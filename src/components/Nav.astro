@@ -1,0 +1,52 @@
+---
+import { PROFILE, SITES, OTHER } from '../lib/profile';
+import { UI } from '../lib/ui';
+import type { Lang } from '../lib/resume';
+
+interface Props {
+  lang: Lang;
+  sections: { id: string; num: string; label: string }[];
+}
+const { lang, sections } = Astro.props;
+const other = lang === 'pt' ? 'en' : 'pt';
+---
+
+<nav>
+  <div class="links">
+    {sections.map((s) => (
+      <a href={`#${s.id}`}><span class="n">{s.num}</span> {s.label}</a>
+    ))}
+  </div>
+  <div class="meta">
+    <a class="cross" href={SITES[OTHER[PROFILE]]}>{UI.seeOther[PROFILE][lang]}</a>
+    <span class="toggle">
+      [<a data-lang-toggle href="/en/" aria-current={lang === 'en' ? 'page' : undefined}>EN</a
+      >|<a data-lang-toggle href="/pt/" aria-current={lang === 'pt' ? 'page' : undefined}>PT</a>]
+    </span>
+  </div>
+</nav>
+
+<style>
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    padding: 10px 24px;
+    background: color-mix(in srgb, var(--surface) 88%, transparent);
+    backdrop-filter: blur(6px);
+    border-bottom: 2px solid var(--border);
+    font-family: var(--mono);
+    font-size: 0.72rem;
+  }
+  .links { display: flex; gap: 16px; flex-wrap: wrap; }
+  a { text-decoration: none; color: var(--muted); }
+  a:hover { color: var(--accent); }
+  .n { color: var(--accent); }
+  .toggle a[aria-current='page'] { color: var(--accent); font-weight: 700; }
+  .cross { color: var(--faint); }
+</style>

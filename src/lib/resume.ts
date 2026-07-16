@@ -1,5 +1,5 @@
 import { readFileSync } from 'node:fs';
-import { fileURLToPath } from 'node:url';
+import { resolve } from 'node:path';
 import { parse } from 'yaml';
 import {
   resumeSchema,
@@ -11,7 +11,7 @@ import {
 
 export type Lang = 'en' | 'pt';
 
-const YAML_PATH = fileURLToPath(new URL('../../content/resume.yaml', import.meta.url));
+const YAML_PATH = resolve(process.cwd(), 'content', 'resume.yaml');
 
 export function loadResume(): Resume {
   return resumeSchema.parse(parse(readFileSync(YAML_PATH, 'utf8')));

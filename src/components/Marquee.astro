@@ -1,0 +1,32 @@
+---
+interface Props {
+  items: string[];
+}
+const { items } = Astro.props;
+const line = items.join(' ✦ ') + ' ✦ ';
+---
+
+<div class="marquee" aria-hidden="true">
+  <div class="track"><span>{line.repeat(3)}</span><span>{line.repeat(3)}</span></div>
+</div>
+
+<style>
+  .marquee {
+    background: var(--accent);
+    color: var(--accent-ink);
+    overflow: hidden;
+    white-space: nowrap;
+    font-family: var(--mono);
+    font-weight: 700;
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 6px 0;
+  }
+  .track { display: inline-flex; }
+  .track span { animation: scroll 45s linear infinite; padding-right: 2rem; }
+  @keyframes scroll { to { transform: translateX(-100%); } }
+  @media (prefers-reduced-motion: reduce) {
+    .track span { animation: none; }
+  }
+</style>

@@ -1,0 +1,46 @@
+---
+import Layout from './Layout.astro';
+import Marquee from './Marquee.astro';
+import Nav from './Nav.astro';
+import Hero from './Hero.astro';
+import { PROFILE } from '../lib/profile';
+import { UI } from '../lib/ui';
+import { loadResume, filterResume, metrics, t, type Lang } from '../lib/resume';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+
+const resume = filterResume(loadResume(), PROFILE);
+const m = metrics(resume);
+
+const marqueeItems = [
+  t(resume.basics.headline[PROFILE], lang).toUpperCase(),
+  ...resume.skills.slice(0, 8).map((s) => s.name),
+];
+
+const sections = [
+  { id: 'exp', label: UI.experience[lang] },
+  ...(resume.research.length > 0 ? [{ id: 'research', label: UI.research[lang] }] : []),
+  { id: 'stack', label: UI.stack[lang] },
+  { id: 'certs', label: UI.certifications[lang] },
+  { id: 'projects', label: UI.projects[lang] },
+  { id: 'contact', label: UI.education[lang] },
+].map((s, i) => ({ ...s, num: String(i + 2).padStart(2, '0') }));
+
+const num = (id: string) => sections.find((s) => s.id === id)?.num ?? '00';
+
+const title = `Ítalo Guimarães — ${t(resume.basics.headline[PROFILE], lang)}`;
+const description = t(resume.basics.headline[PROFILE], lang) + ' · ' + t(resume.basics.location, lang);
+---
+
+<Layout lang={lang} title={title} description={description}>
+  <div class="frame">
+    <Marquee items={marqueeItems} />
+    <Nav lang={lang} sections={sections} />
+    <Hero lang={lang} resume={resume} m={m} />
+    <!-- T6: <Experience/> <Research/> · T7: <Stack/> <Certifications/> <Projects/> · T8: <EducationContact/> -->
+    <Marquee items={marqueeItems} />
+  </div>
+</Layout>
