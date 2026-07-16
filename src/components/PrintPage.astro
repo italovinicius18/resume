@@ -1,0 +1,120 @@
+---
+import { PROFILE } from '../lib/profile';
+import { UI, SKILL_CATEGORY_LABELS, groupSkills } from '../lib/ui';
+import {
+  loadResume, filterResume, t, formatRange, formatDate, roleFor, type Lang,
+} from '../lib/resume';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const r = filterResume(loadResume(), PROFILE);
+const certs = r.certifications.filter((c) => c.priority !== 'low');
+const skillGroups = groupSkills(r.skills);
+---
+
+<!doctype html>
+<html lang={lang === 'pt' ? 'pt-BR' : 'en'}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="robots" content="noindex" />
+    <title>{r.basics.name} — CV</title>
+  </head>
+  <body>
+    <header>
+      <h1>{r.basics.name}</h1>
+      <p class="headline">{t(r.basics.headline[PROFILE], lang)}</p>
+      <p class="contact">
+        {r.basics.email} · {r.basics.phone} · {t(r.basics.location, lang)} ·
+        {r.basics.links.linkedin.replace('https://', '')} · {r.basics.links.github.replace('https://', '')}
+      </p>
+    </header>
+
+    <h2>{UI.experience[lang]}</h2>
+    {r.experience.map((e) => (
+      <section class="entry">
+        <div class="line">
+          <strong>{t(roleFor(e, PROFILE), lang)} — {e.company}</strong>
+          <span>{formatRange(e.start, e.end, lang)}</span>
+        </div>
+        <p class="loc">{t(e.location, lang)}</p>
+        <ul>
+          {e.highlights.map((h) => <li>{t(h.text, lang)}</li>)}
+          {e.clients?.flatMap((c) =>
+            c.highlights.map((h) => <li><em>{c.name}:</em> {t(h.text, lang)}</li>)
+          )}
+        </ul>
+      </section>
+    ))}
+
+    {r.research.length > 0 && (
+      <>
+        <h2>{UI.research[lang]}</h2>
+        {r.research.map((x) => (
+          <section class="entry">
+            <div class="line">
+              <strong>{t(x.title, lang)}</strong>
+              <span>{formatRange(x.start, x.end, lang)}</span>
+            </div>
+            <p class="loc">{t(x.institution, lang)}</p>
+            <ul>{x.highlights.map((h) => <li>{t(h.text, lang)}</li>)}</ul>
+          </section>
+        ))}
+      </>
+    )}
+
+    <h2>{lang === 'pt' ? 'Formação' : 'Education'}</h2>
+    {r.education.map((e) => (
+      <section class="entry">
+        <div class="line">
+          <strong>{t(e.degree, lang)}{e.field ? ` — ${t(e.field, lang)}` : ''}</strong>
+          <span>{formatRange(e.start, e.end, lang)}</span>
+        </div>
+        <p class="loc">{t(e.institution, lang)}</p>
+      </section>
+    ))}
+
+    <h2>{UI.certifications[lang]}</h2>
+    <ul class="flat">
+      {certs.map((c) => (
+        <li>{t(c.name, lang)} — {c.issuer}, {formatDate(c.issued, lang)}</li>
+      ))}
+    </ul>
+
+    <h2>{UI.stack[lang]}</h2>
+    {skillGroups.map(([cat, skills]) => (
+      <p class="skills">
+        <strong>{SKILL_CATEGORY_LABELS[cat][lang]}:</strong> {skills.map((s) => s.name).join(', ')}
+      </p>
+    ))}
+
+    <h2>{UI.languages[lang]}</h2>
+    <ul class="flat">
+      {r.languages.map((l) => (
+        <li>{t(l.language, lang)} — {t(l.level, lang)}</li>
+      ))}
+    </ul>
+  </body>
+</html>
+
+<style is:global>
+  @page { size: A4; margin: 13mm 15mm; }
+  * { box-sizing: border-box; margin: 0; }
+  body { font: 9.5pt/1.42 'Helvetica Neue', Arial, sans-serif; color: #111; }
+  header { margin-bottom: 12pt; }
+  h1 { font-size: 17pt; letter-spacing: -0.02em; }
+  .headline { font-size: 11pt; font-weight: 600; margin-top: 2pt; }
+  .contact { font-size: 8.5pt; color: #444; margin-top: 4pt; }
+  h2 { font-size: 10.5pt; text-transform: uppercase; letter-spacing: 0.06em; border-bottom: 1pt solid #111; margin: 12pt 0 6pt; padding-bottom: 2pt; }
+  .entry { margin-bottom: 8pt; break-inside: avoid; }
+  .line { display: flex; justify-content: space-between; gap: 8pt; }
+  .line span { white-space: nowrap; color: #444; font-size: 8.5pt; }
+  .loc { font-size: 8.5pt; color: #666; margin: 1pt 0 3pt; }
+  ul { padding-left: 12pt; }
+  li { margin-bottom: 2pt; }
+  .flat { list-style: none; padding: 0; }
+  .flat li { margin-bottom: 1.5pt; }
+  .skills { margin-bottom: 3pt; }
+  em { font-style: normal; font-weight: 600; }
+</style>
