@@ -85,9 +85,12 @@ export interface Metrics {
 
 export function metrics(filtered: Resume): Metrics {
   const firstStart = filtered.experience.map((e) => e.start).sort()[0];
-  const [y, m = '01'] = firstStart.split('-');
-  const elapsed = Date.now() - new Date(Number(y), Number(m) - 1, 1).getTime();
-  const years = Math.floor(elapsed / (365.25 * 24 * 3600 * 1000));
+  let years = 0;
+  if (firstStart) {
+    const [y, m = '01'] = firstStart.split('-');
+    const elapsed = Date.now() - new Date(Number(y), Number(m) - 1, 1).getTime();
+    years = Math.floor(elapsed / (365.25 * 24 * 3600 * 1000));
+  }
 
   const allHighlights = [
     ...filtered.experience.flatMap((e) => [

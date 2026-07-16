@@ -80,4 +80,9 @@ describe('metrics', () => {
   it('certs conta itens filtrados', () => {
     expect(metrics(software).certs).toBeLessThan(metrics(data).certs);
   });
+  it('metrics não lança com zero experiências', () => {
+    const clone = structuredClone(resume);
+    clone.experience = clone.experience.filter(() => false) as typeof clone.experience;
+    expect(metrics(clone).years).toBe(0);
+  });
 });

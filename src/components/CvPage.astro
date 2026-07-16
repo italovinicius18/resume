@@ -27,11 +27,11 @@ const marqueeItems = [
 ];
 
 const sections = [
-  { id: 'exp', label: UI.experience[lang] },
+  ...(resume.experience.length > 0 ? [{ id: 'exp', label: UI.experience[lang] }] : []),
   ...(resume.research.length > 0 ? [{ id: 'research', label: UI.research[lang] }] : []),
-  { id: 'stack', label: UI.stack[lang] },
-  { id: 'certs', label: UI.certifications[lang] },
-  { id: 'projects', label: UI.projects[lang] },
+  ...(resume.skills.length > 0 ? [{ id: 'stack', label: UI.stack[lang] }] : []),
+  ...(resume.certifications.length > 0 ? [{ id: 'certs', label: UI.certifications[lang] }] : []),
+  ...(resume.projects.length > 0 ? [{ id: 'projects', label: UI.projects[lang] }] : []),
   { id: 'contact', label: UI.education[lang] },
 ].map((s, i) => ({ ...s, num: String(i + 2).padStart(2, '0') }));
 
@@ -46,13 +46,21 @@ const description = t(resume.basics.headline[PROFILE], lang) + ' · ' + t(resume
     <Marquee items={marqueeItems} />
     <Nav lang={lang} sections={sections} />
     <Hero lang={lang} resume={resume} m={m} />
-    <Experience lang={lang} items={resume.experience} num={num('exp')} />
+    {resume.experience.length > 0 && (
+      <Experience lang={lang} items={resume.experience} num={num('exp')} />
+    )}
     {resume.research.length > 0 && (
       <Research lang={lang} items={resume.research} num={num('research')} />
     )}
-    <Stack lang={lang} items={resume.skills} num={num('stack')} />
-    <Certifications lang={lang} items={resume.certifications} num={num('certs')} />
-    <Projects lang={lang} items={resume.projects} num={num('projects')} />
+    {resume.skills.length > 0 && (
+      <Stack lang={lang} items={resume.skills} num={num('stack')} />
+    )}
+    {resume.certifications.length > 0 && (
+      <Certifications lang={lang} items={resume.certifications} num={num('certs')} />
+    )}
+    {resume.projects.length > 0 && (
+      <Projects lang={lang} items={resume.projects} num={num('projects')} />
+    )}
     <EducationContact lang={lang} resume={resume} num={num('contact')} />
     <Marquee items={marqueeItems} />
   </div>
