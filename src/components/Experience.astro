@@ -1,0 +1,53 @@
+---
+import { PROFILE } from '../lib/profile';
+import { UI } from '../lib/ui';
+import { t, formatRange, roleFor, type Lang } from '../lib/resume';
+import type { Resume } from '../lib/schema';
+
+interface Props {
+  lang: Lang;
+  items: Resume['experience'];
+  num: string;
+}
+const { lang, items, num } = Astro.props;
+---
+
+<section id="exp" class="section">
+  <h2 class="sec"><span class="num">{num}</span>{UI.experience[lang]}</h2>
+  {items.map((e) => (
+    <article class="xp reveal">
+      <header>
+        <h3>{e.company}</h3>
+        <span class="mono">{formatRange(e.start, e.end, lang)}</span>
+      </header>
+      <p class="role">
+        {t(roleFor(e, PROFILE), lang)}
+        <span class="mono"> — {t(e.location, lang)}</span>
+      </p>
+      {e.highlights.length > 0 && <ul>{e.highlights.map((h) => <li>{t(h.text, lang)}</li>)}</ul>}
+      {e.clients && (
+        <div class="clients">
+          {e.clients.map((c) => (
+            <div class="client">
+              <h4 class="mono">
+                {c.name} · {t(c.duration, lang)}
+              </h4>
+              <ul>{c.highlights.map((h) => <li>{t(h.text, lang)}</li>)}</ul>
+            </div>
+          ))}
+        </div>
+      )}
+    </article>
+  ))}
+</section>
+
+<style>
+  .xp { border: 2px solid var(--border); background: var(--surface-2); padding: 26px 28px; margin-bottom: 22px; }
+  header { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+  h3 { font-family: var(--display); font-size: 1.15rem; text-transform: uppercase; letter-spacing: 0.01em; }
+  .role { font-weight: 600; color: var(--accent); margin: 6px 0 14px; }
+  li { color: var(--muted); font-size: 0.92rem; margin-bottom: 6px; }
+  .clients { margin-top: 18px; display: grid; gap: 14px; }
+  .client { border-left: 3px solid var(--accent); padding: 10px 0 10px 18px; background: var(--surface); }
+  .client h4 { color: var(--text); font-size: 0.78rem; margin-bottom: 8px; }
+</style>
