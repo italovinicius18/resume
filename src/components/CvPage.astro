@@ -8,6 +8,7 @@ import Research from './Research.astro';
 import Stack from './Stack.astro';
 import Certifications from './Certifications.astro';
 import Projects from './Projects.astro';
+import EducationContact from './EducationContact.astro';
 import { PROFILE } from '../lib/profile';
 import { UI } from '../lib/ui';
 import { loadResume, filterResume, metrics, t, type Lang } from '../lib/resume';
@@ -52,7 +53,7 @@ const description = t(resume.basics.headline[PROFILE], lang) + ' · ' + t(resume
     <Stack lang={lang} items={resume.skills} num={num('stack')} />
     <Certifications lang={lang} items={resume.certifications} num={num('certs')} />
     <Projects lang={lang} items={resume.projects} num={num('projects')} />
-    <!-- T8 -->
+    <EducationContact lang={lang} resume={resume} num={num('contact')} />
     <Marquee items={marqueeItems} />
   </div>
 </Layout>
